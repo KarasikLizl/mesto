@@ -3,5 +3,6 @@
 /* стили page */
 @import url("../blocks/page/page.css");
 /* стили header */
-
+@import url("../blocks/header/header.css");
+@import url("../blocks/header/__logo/header__logo.css");
 /* стили footer */
