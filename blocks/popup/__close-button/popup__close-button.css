@@ -11,7 +11,7 @@
     align-self: center;
     position: absolute;
     opacity: 1;
-    transition: opacity .2s ease-in;    
+    transition: opacity .2s ease-in;
 }
 
 .popup__close-button:hover {
