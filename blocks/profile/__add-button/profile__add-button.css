@@ -11,6 +11,13 @@
     background-size: 22px 22px;
     cursor: pointer;
     align-self: center;
+    opacity: 1;
+    transition: opacity .2s ease-in;
+}
+
+.profile__add-button:hover {
+    color: #000;
+    opacity: .6;
 }
 
 @media (max-width: 767px) {
