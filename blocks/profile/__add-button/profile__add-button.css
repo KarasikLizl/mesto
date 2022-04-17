@@ -3,7 +3,7 @@
     margin-left: 18px;
     width: 150px;
     height: 50px;
-    background-image: url("../../../images/__add-button.svg");
+    background-image: url("../../../images/add-button.svg");
     background-position: center;
     border: 2px solid #FFF;
     background-color: inherit;
@@ -11,13 +11,6 @@
     background-size: 22px 22px;
     cursor: pointer;
     align-self: center;
-    opacity: 1;
-    transition: opacity .2s ease-in;
-}
-
-.profile__add-button:hover {
-    color: #000;
-    opacity: .6;
 }
 
 @media (max-width: 767px) {

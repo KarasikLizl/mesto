@@ -8,79 +8,83 @@
 </head>
 <body class="page">
     <header class="header">
-        <img class="header__logo" alt="Место. Россия" src="./images/__logo.svg">
+        <img class="header__logo" alt="Место. Россия" src="./images/logo.svg">
     </header>
     <main class="content">
         <section class="profile">
             <div class="profile__user">
-                <img class="profile__avatar" alt="Портрет Ж. Кусто" src="./images/__avatar.png">
+                <img class="profile__avatar" alt="Портрет Ж. Кусто" src="./images/avatar.png">
                 <div class="profile__info">
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button"></button>
+                    <div class="profile__name">
+                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button profile_hover_on" type="button"></button>
+                    </div>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
             </div>
-           <button class="profile__add-button"></button>
+           <button class="profile__add-button profile_hover_on"></button>
         </section>        
         <section class="elements">
             <ul class="cards">
                 <li class="card">
-                    <img class="card__image" alt="Карачаевск" src="./images/card__image/__image1.png">
+                    <img class="card__image" alt="Карачаевск" src="./images/card__image/image1.png">
                     <div class="card__caption">
                         <h2 class="card__title">Карачаевск</h2>
-                        <button class="card__like-button"></button>
+                        <button class="card__like-button" type="button"></button>
                     </div>
                 </li>
                 <li class="card">
-                    <img class="card__image" alt="Карачаевск" src="./images/card__image/__image2.png">
+                    <img class="card__image" alt="Карачаевск" src="./images/card__image/image2.png">
                     <div class="card__caption">
                         <h2 class="card__title">Гора Эльбрус</h2>
-                        <button class="card__like-button"></button>
+                        <button class="card__like-button" type="button"></button>
                     </div>
                 </li>
                 <li class="card">
-                    <img class="card__image" alt="Домбай" src="./images/card__image/__image3.jpg">
+                    <img class="card__image" alt="Домбай" src="./images/card__image/image3.jpg">
                     <div class="card__caption">
                         <h2 class="card__title">Домбай</h2>
-                        <button class="card__like-button"></button>
+                        <button class="card__like-button" type="button"></button>
                     </div>
                 </li>                
                 <li class="card">
-                    <img class="card__image" alt="Карелия" src="./images/card__image/__image4.jpg">
+                    <img class="card__image" alt="Карелия" src="./images/card__image/image4.jpg">
                     <div class="card__caption">
                         <h2 class="card__title">Карелия</h2>
-                        <button class="card__like-button"></button>
+                        <button class="card__like-button" type="button"></button>
                     </div>
                 </li>
                 <li class="card">
-                    <img class="card__image" alt="Урал" src="./images/card__image/__image5.jpg">
+                    <img class="card__image" alt="Урал" src="./images/card__image/image5.jpg">
                     <div class="card__caption">
                         <h2 class="card__title">Урал</h2>
-                        <button class="card__like-button"></button>
+                        <button class="card__like-button" type="button"></button>
                     </div>
                 </li>
                 <li class="card">
-                    <img class="card__image" alt="Пермский Край" src="./images/card__image/__image6.jpg">
+                    <img class="card__image" alt="Пермский Край" src="./images/card__image/image6.jpg">
                     <div class="card__caption">
                         <h2 class="card__title">Пермский Край</h2>
-                        <button class="card__like-button"></button>
+                        <button class="card__like-button" type="button"></button>
                     </div>
                 </li>
             </ul>
         </section>        
-        <footer class="footer">&copy; 2022 Mesto Russia</footer>        
+        <footer class="footer">
+            <p class="footer__caption">&copy; 2022 Mesto Russia</p>
+        </footer>        
     </main>
-    <section class="popup-container">
-        <div class="popup">
-            <button class="popup__close-button"></button>            
-            <form action="/" method="post" name="profile-edit" class="form">
-                <h3 class="form__title">Редактировать профиль</h3>
-                <input type="text" placeholder="Ваше имя" class="form__input form__input_field_username" value="">        
-                <input type="text" placeholder="Пара слов о вас" class="form__input form__input_field_job" value="">
-                <button class="form__submit-button">Сохранить</button>
+    <section class="popup">
+        <div class="popup__container">
+            <button class="popup__close-button" type="button"></button> 
+            <h3 class="form__title">Редактировать профиль</h3>           
+            <form action="/" method="post" name="profile-edit" class="form">                
+                <input type="text" placeholder="Ваше имя" class="form__input form__input_field_username" value="Жак-Ив Кусто" name="profile-name">        
+                <input type="text" placeholder="Пара слов о вас" class="form__input form__input_field_job" value="Исследователь океана" name="profile-job">
+                <button class="form__submit-button" type="submit">Сохранить</button>
             </form>
         </div>
     </section>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>

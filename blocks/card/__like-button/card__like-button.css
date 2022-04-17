@@ -3,7 +3,7 @@
     margin-left: 18px;
     width: 22px;
     height: 19px;
-    background-image: url("../../../images/__like-button/__like-button.svg");
+    background-image: url("../../../images/__like-button/like-button.svg");
     background-size: contain;
     background-position: center;
     border: none;
@@ -15,9 +15,9 @@
 }
 
 .card__like-button:hover {
-    background-image: url("../../../images/__like-button/__like-button-hover.svg");
+    background-image: url("../../../images/__like-button/like-button-hover.svg");
 }
 
 .card__like-button:active {
-    background-image: url("../../../images/__like-button/__like-button-active.svg");
+    background-image: url("../../../images/__like-button/like-button-active.svg");
 }

@@ -1,8 +1,7 @@
 .form__input {
-    width: 358px;
-    height: 27px;
+    max-width: 358px;
     border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, .6);
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
     margin-bottom: 30px;
     padding-bottom: 13px;
     padding-right: 0;
@@ -20,8 +19,8 @@
     margin-bottom: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .form__input {
-        width: 238px;
+        max-width: 238px;
     }
 }
