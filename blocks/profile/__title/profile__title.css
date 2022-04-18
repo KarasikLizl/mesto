@@ -7,7 +7,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    display: flex;
 }
 
 @media (max-width: 767px) {
