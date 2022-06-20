@@ -17,13 +17,14 @@
 @import url("../blocks/profile/__edit-button/profile__edit-button.css");
 @import url("../blocks/profile/__subtitle/profile__subtitle.css");
 @import url("../blocks/profile/__add-button/profile__add-button.css");
-/* стили elements */
+/* стили card */
 @import url("../blocks/cards/cards.css");
 @import url("../blocks/card/card.css");
 @import url("../blocks/card/__image/card__image.css");
 @import url("../blocks/card/__caption/card__caption.css");
 @import url("../blocks/card/__title/card__title.css");
 @import url("../blocks/card/__like-button/card__like-button.css");
+@import url("../blocks/card/__like-button/__like-button_active/card__like-button_active.css");
 /* стили footer */
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__caption/footer__caption.css");
@@ -36,9 +37,9 @@
 @import url("../blocks/popup/_is_opened/popup_is_opened.css");
 /* стили form */
 @import url("../blocks/form/form.css");
+@import url("../blocks/form/_profile/form_profile.css");
+@import url("../blocks/form/_photo/form_photo.css");
 @import url("../blocks/form/__input/form__input.css");
-@import url("../blocks/form/__input/_field/form__input_field_username.css");
-@import url("../blocks/form/__input/_field/form__input_field_job.css");
 @import url("../blocks/form/__submit-button/form__submit-button.css");
 
 

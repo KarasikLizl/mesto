@@ -26,65 +26,51 @@
         </section>        
         <section class="elements">
             <ul class="cards">
-                <li class="card">
-                    <img class="card__image" alt="Карачаевск" src="./images/card__image/image1.png">
-                    <div class="card__caption">
-                        <h2 class="card__title">Карачаевск</h2>
-                        <button class="card__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="card">
-                    <img class="card__image" alt="Карачаевск" src="./images/card__image/image2.png">
-                    <div class="card__caption">
-                        <h2 class="card__title">Гора Эльбрус</h2>
-                        <button class="card__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="card">
-                    <img class="card__image" alt="Домбай" src="./images/card__image/image3.jpg">
-                    <div class="card__caption">
-                        <h2 class="card__title">Домбай</h2>
-                        <button class="card__like-button" type="button"></button>
-                    </div>
-                </li>                
-                <li class="card">
-                    <img class="card__image" alt="Карелия" src="./images/card__image/image4.jpg">
-                    <div class="card__caption">
-                        <h2 class="card__title">Карелия</h2>
-                        <button class="card__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="card">
-                    <img class="card__image" alt="Урал" src="./images/card__image/image5.jpg">
-                    <div class="card__caption">
-                        <h2 class="card__title">Урал</h2>
-                        <button class="card__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="card">
-                    <img class="card__image" alt="Пермский Край" src="./images/card__image/image6.jpg">
-                    <div class="card__caption">
-                        <h2 class="card__title">Пермский Край</h2>
-                        <button class="card__like-button" type="button"></button>
-                    </div>
-                </li>
             </ul>
         </section>        
         <footer class="footer">
             <p class="footer__caption">&copy; 2022 Mesto Russia</p>
         </footer>        
     </main>
-    <section class="popup">
-        <div class="popup__container">
-            <button class="popup__close-button" type="button"></button> 
-            <h3 class="popup__title">Редактировать профиль</h3>           
-            <form action="/" method="post" name="profile-edit" class="form">                
-                <input type="text" placeholder="Ваше имя" class="form__input form__input_field_username" value="Жак-Ив Кусто" name="profile-name">        
-                <input type="text" placeholder="Пара слов о вас" class="form__input form__input_field_job" value="Исследователь океана" name="profile-job">
-                <button class="form__submit-button" type="submit">Сохранить</button>
-            </form>
+    
+    <script src="./scripts/cards.js" defer></script>
+    <script src="./scripts/index.js" defer></script>
+
+    <template id="card-template">
+        <li class="card">
+            <img class="card__image" alt="Пермский Край" src="">
+            <div class="card__caption">
+                <h2 class="card__title"></h2>
+                <button class="card__like-button" type="button"></button>
+            </div>
+        </li>
+    </template>
+
+   
+        <div class="popup popup_profile">
+            <div class="popup__container">
+                <button class="popup__close-button" type="button"></button> 
+                <h3 class="popup__title">Редактировать профиль</h3>           
+                <form action="/" method="post" name="profile-edit" class="form form_profile">                
+                    <input type="text" placeholder="Ваше имя" class="form__input form__input_field_username" value="Жак-Ив Кусто" name="profile-name">        
+                    <input type="text" placeholder="Пара слов о вас" class="form__input form__input_field_job" value="Исследователь океана" name="profile-job">
+                    <button class="form__submit-button form__submit-button_type_profile" type="submit">Сохранить</button>
+                </form>
+            </div>
         </div>
-    </section>
-    <script src="./scripts/index.js"></script>
+    
+    
+        <div class="popup popup_photo">
+            <div class="popup__container">
+                <button class="popup__close-button" type="button"></button> 
+                <h3 class="popup__title">Новое место</h3>           
+                <form action="/" method="post" name="photo-add" class="form form_photo">                
+                    <input type="text" placeholder="Название" class="form__input form__input_field_title" value="" name="photo-name">        
+                    <input type="text" placeholder="Ссылка на картинку" class="form__input form__input_field_photo" value="" name="photo-link">
+                    <button class="form__submit-button form__submit-button_type_photo" type="submit">Создать</button>
+                </form>
+            </div>
+        </div>
+    
 </body>
 </html>

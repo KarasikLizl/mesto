@@ -11,13 +11,10 @@
     background-repeat: no-repeat;
     cursor: pointer;
     align-self: center;
-    
+    transition: .2s ease;    
 }
 
 .card__like-button:hover {
-    background-image: url("../../../images/__like-button/like-button-hover.svg");
-}
-
-.card__like-button:active {
-    background-image: url("../../../images/__like-button/like-button-active.svg");
+    opacity: .5;
+    
 }
