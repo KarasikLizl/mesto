@@ -38,10 +38,11 @@
 
     <template id="card-template">
         <li class="card">
-            <img class="card__image" alt="Пермский Край" src="">
+            <button class="card__pointer" type="button"><img class="card__image" alt="Фотокарточка" src=""></button>
+            <button class="card__delete-button" type="button"></button>
             <div class="card__caption">
                 <h2 class="card__title"></h2>
-                <button class="card__like-button" type="button"></button>
+                <button class="card__like-button" type="button"></button>                
             </div>
         </li>
     </template>
@@ -68,6 +69,14 @@
                     <button class="form__submit-button form__submit-button_type_photo" type="submit">Создать</button>
                 </form>
             </div>
-        </div>    
+        </div> 
+        
+        <div class="popup popup_photo_open">
+            <div class="popup__container">
+                <button class="popup__close-button popup_type_photo" type="button"></button> 
+                <img class="popup__big" alt="Фотократочка" src="./images/avatar.png">
+                <h4 class="popup__subtitle">пук</h4>                
+            </div> 
+        </div>
 </body>
 </html>
