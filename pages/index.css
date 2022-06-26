@@ -32,12 +32,16 @@
 @import url("../blocks/footer/__caption/footer__caption.css");
 /* стили popup */
 @import url("../blocks/popup/popup.css");
+@import url("../blocks/popup/_background/popup_background_dark.css");
+@import url("../blocks/popup/__figure/popup__figure.css");
 @import url("../blocks/popup/__title/popup__title.css");
 @import url("../blocks/popup/__container/popup__container.css");
+@import url("../blocks/popup/__container/__photo/popup__container_photo_opened.css");
 @import url("../blocks/popup/__close-button/popup__close-button.css");
+@import url("../blocks/popup/__close-button/_type/popup__close-button_type_photo.css");
 @import url("../blocks/popup/__edit-form/popup__edit-form.css");
 @import url("../blocks/popup/_is_opened/popup_is_opened.css");
-@import url("../blocks/popup/__big/popup__big.css");
+@import url("../blocks/popup/__big/popup__big-photo.css");
 @import url("../blocks/popup/__subtitle/popup__subtitle.css");
 /* стили form */
 @import url("../blocks/form/form.css");

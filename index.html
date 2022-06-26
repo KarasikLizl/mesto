@@ -38,7 +38,7 @@
 
     <template id="card-template">
         <li class="card">
-            <button class="card__pointer" type="button"><img class="card__image" alt="Фотокарточка" src=""></button>
+            <div class="card__pointer"><img class="card__image" alt="" src=""></div>
             <button class="card__delete-button" type="button"></button>
             <div class="card__caption">
                 <h2 class="card__title"></h2>
@@ -59,7 +59,7 @@
             </div>
         </div>    
     
-        <div class="popup popup_photo">
+        <div class="popup popup_photo_add">
             <div class="popup__container">
                 <button class="popup__close-button" type="button"></button> 
                 <h3 class="popup__title">Новое место</h3>           
@@ -71,11 +71,13 @@
             </div>
         </div> 
         
-        <div class="popup popup_photo_open">
-            <div class="popup__container">
-                <button class="popup__close-button popup_type_photo" type="button"></button> 
-                <img class="popup__big" alt="Фотократочка" src="./images/avatar.png">
-                <h4 class="popup__subtitle">пук</h4>                
+        <div class="popup popup_photo_opened popup_background_dark">
+            <div class="popup__container popup__container_photo_opened">                 
+                <figure class="popup__figure">
+                    <button class="popup__close-button popup__close-button_type_photo" type="button"></button>
+                    <img class="popup__big-photo" alt="" src="">
+                    <figcaption class="popup__subtitle"></figcaption>
+                </figure>   
             </div> 
         </div>
 </body>

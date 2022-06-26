@@ -9,8 +9,8 @@ const addPhotoButton = page.querySelector(".profile__add-button");
 
 //Попапы
 const popupProfile = page.querySelector(".popup_profile");
-const popupPhoto = page.querySelector(".popup_photo");
-const popupPhotoOpen = page.querySelector(".popup_photo_open");
+const popupPhoto = page.querySelector(".popup_photo_add");
+const popupPhotoOpened = page.querySelector(".popup_photo_opened");
 
 // Инпуты, форма и кнопки попапа для профиля
 const profileForm = popupProfile.querySelector(".form_profile");
@@ -22,10 +22,10 @@ const popupProfileCloseBtn = popupProfile.querySelector(".popup__close-button_ty
 const photoForm = popupPhoto.querySelector(".form_photo");
 const popupPhotoTitle = popupPhoto.querySelector(".form__input_field_title");
 const popupPhotoLink = popupPhoto.querySelector(".form__input_field_photo");
-const popupPhotoCloseBtn = popupPhoto.querySelector(".popup__close-button_type_photo");
 
-//Функция открытия popup
-function popupOpen(newPopup) {
+
+//Функция закрытия popup
+function popupCloseHandler(newPopup) {
   const closeBtn = newPopup.querySelector(".popup__close-button");
   closeBtn.addEventListener("click", function (event) {
     event.preventDefault();
@@ -33,23 +33,23 @@ function popupOpen(newPopup) {
   });
   return newPopup;
 }
+//Функция открытия popup
+function popupOpenHandler(button, popupType) {
+  button.addEventListener("click", function (event) {
+    event.preventDefault();
+    popupType.classList.toggle("popup_is_opened");
+  })
+};
 
-//Слушатели для открытия попапов
-editProfileButton.addEventListener("click", function (event) {
-  event.preventDefault();
-  popupProfile.classList.toggle("popup_is_opened");
-});
-popupOpen(popupProfile);
+popupOpenHandler(editProfileButton, popupProfile);
+popupOpenHandler(addPhotoButton, popupPhoto);
 
-addPhotoButton.addEventListener("click", function (event) {
-  event.preventDefault();
-  popupPhoto.classList.toggle("popup_is_opened");
-});
-popupOpen(popupPhoto);
+popupCloseHandler(popupProfile);
+popupCloseHandler(popupPhoto); 
 
 //Функция редактирования имени профиля
-function submitProfileHandler (evt) {
-  evt.preventDefault();
+function submitProfileHandler (event) {
+  event.preventDefault();
 
   profileName.textContent = popupProfileName.value;
   profileJob.textContent = popupProfileJob.value;
@@ -62,8 +62,8 @@ profileForm.addEventListener("submit", submitProfileHandler);
 //Фотокарточки
 
 //Сабмит добавления фотокарточки
-function submitPhotoHandler (evt) {
-  evt.preventDefault();
+function submitPhotoHandler (event) {
+  event.preventDefault();
 
   renderCards({name: popupPhotoTitle.value, link: popupPhotoLink.value });
   popupPhotoTitle.value = '';
@@ -73,35 +73,34 @@ function submitPhotoHandler (evt) {
 };
 
 //Лайк фотокарточки
-function likeButtonHandler (evt) {
-  evt.target.classList.toggle("card__like-button_active");
+function likeButtonHandler (event) {
+  event.target.classList.toggle("card__like-button_active");
 };
 
 //Удаление фотокарточки
-function deleteCardHandler (evt) {
-  evt.target.closest(".card").remove();
+function deleteCardHandler (event) {
+  event.target.closest(".card").remove();
 }
 
-const photoCloseBtn = popupPhotoOpen.querySelector(".popup_type_photo");
+const photoCloseBtn = popupPhotoOpened.querySelector(".popup__close-button_type_photo");
 photoCloseBtn.addEventListener("click", function(event) {
   event.preventDefault();
-  popupPhotoOpen.classList.toggle("popup_is_opened");
+  popupPhotoOpened.classList.toggle("popup_is_opened");
 });
 
-
 //Открытие фотокарточки
-function openPhotoHandler (e) {
-  const target = e.currentTarget;
+function openPhotoHandler (event) {
+  const target = event.currentTarget;
   const cardTitle = target.parentNode.querySelector('.card__title');
   const cardImage = target.querySelector('.card__image');
-  const fullPhoto = popupPhotoOpen.querySelector(".popup__big");
-  const photoSubtitle = popupPhotoOpen.querySelector(".popup__subtitle");
-
+  const fullPhoto = popupPhotoOpened.querySelector(".popup__big-photo");
+  const photoSubtitle = popupPhotoOpened.querySelector(".popup__subtitle");
+  
+  fullPhoto.alt = cardTitle.textContent;
   fullPhoto.src = cardImage.src;
   photoSubtitle.textContent = cardTitle.textContent;
-  popupPhotoOpen.classList.toggle("popup_is_opened");
+  popupPhotoOpened.classList.toggle("popup_is_opened");
 };
-
 
 //Шаблоны
 const cardTemplate = page
@@ -126,7 +125,9 @@ function preloadCard(initialItem) {
   deleteCard.addEventListener("click", deleteCardHandler);
 
   const openedPhoto = newCard.querySelector(".card__pointer");
-  openedPhoto.addEventListener("click", (e) => openPhotoHandler(e));
+  openedPhoto.addEventListener("click", (event) => openPhotoHandler(event));
+
+  imageCard.alt = titleCard.textContent;
 
   return newCard;
 };
@@ -139,4 +140,4 @@ initialCards.forEach((initialItem) => {
   renderCards(initialItem);
 });
 
-photoForm.addEventListener('submit', submitPhotoHandler);
+photoForm.addEventListener("submit", submitPhotoHandler);
