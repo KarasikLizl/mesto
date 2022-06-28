@@ -23,9 +23,13 @@ const photoForm = popupPhoto.querySelector(".form_photo");
 const popupPhotoTitle = popupPhoto.querySelector(".form__input_field_title");
 const popupPhotoLink = popupPhoto.querySelector(".form__input_field_photo");
 
+// Rнопки попапа для открытия фотокарточек
+const fullPhoto = popupPhotoOpened.querySelector(".popup__big-photo");
+const photoSubtitle = popupPhotoOpened.querySelector(".popup__subtitle");
+
 
 //Функция закрытия popup
-function popupCloseHandler(newPopup) {
+function setPopupCloseHandler(newPopup) {
   const closeBtn = newPopup.querySelector(".popup__close-button");
   closeBtn.addEventListener("click", function (event) {
     event.preventDefault();
@@ -44,11 +48,11 @@ function popupOpenHandler(button, popupType) {
 popupOpenHandler(editProfileButton, popupProfile);
 popupOpenHandler(addPhotoButton, popupPhoto);
 
-popupCloseHandler(popupProfile);
-popupCloseHandler(popupPhoto); 
+setPopupCloseHandler(popupProfile);
+setPopupCloseHandler(popupPhoto); 
 
 //Функция редактирования имени профиля
-function submitProfileHandler (event) {
+function handleProfileFormSubmit (event) {
   event.preventDefault();
 
   profileName.textContent = popupProfileName.value;
@@ -57,12 +61,12 @@ function submitProfileHandler (event) {
   popupProfile.classList.toggle("popup_is_opened");
 };
 
-profileForm.addEventListener("submit", submitProfileHandler);
+profileForm.addEventListener("submit", handleProfileFormSubmit);
 
 //Фотокарточки
 
 //Сабмит добавления фотокарточки
-function submitPhotoHandler (event) {
+function handlePhotoFormSubmit (event) {
   event.preventDefault();
 
   renderCards({name: popupPhotoTitle.value, link: popupPhotoLink.value });
@@ -73,12 +77,12 @@ function submitPhotoHandler (event) {
 };
 
 //Лайк фотокарточки
-function likeButtonHandler (event) {
+function handleButtonTypeLike (event) {
   event.target.classList.toggle("card__like-button_active");
 };
 
 //Удаление фотокарточки
-function deleteCardHandler (event) {
+function handleButtonTypeDelete (event) {
   event.target.closest(".card").remove();
 }
 
@@ -89,12 +93,10 @@ photoCloseBtn.addEventListener("click", function(event) {
 });
 
 //Открытие фотокарточки
-function openPhotoHandler (event) {
+function openPhotoPopup (event) {
   const target = event.currentTarget;
   const cardTitle = target.parentNode.querySelector('.card__title');
-  const cardImage = target.querySelector('.card__image');
-  const fullPhoto = popupPhotoOpened.querySelector(".popup__big-photo");
-  const photoSubtitle = popupPhotoOpened.querySelector(".popup__subtitle");
+  const cardImage = target.querySelector('.card__image');  
   
   fullPhoto.alt = cardTitle.textContent;
   fullPhoto.src = cardImage.src;
@@ -109,7 +111,7 @@ const cardTemplate = page
 //Контейнер
 const initialContainer = page.querySelector(".cards");
 //Подгрузка начальных карточек
-function preloadCard(initialItem) {
+function createCard(initialItem) {
   const newCard = cardTemplate.cloneNode(true);
 
   const titleCard = newCard.querySelector(".card__title");
@@ -119,13 +121,13 @@ function preloadCard(initialItem) {
   imageCard.setAttribute("src", initialItem.link);
   
   const likeButton = newCard.querySelector(".card__like-button");
-  likeButton.addEventListener("click", likeButtonHandler);
+  likeButton.addEventListener("click", handleButtonTypeLike);
 
   const deleteCard = newCard.querySelector(".card__delete-button");
-  deleteCard.addEventListener("click", deleteCardHandler);
+  deleteCard.addEventListener("click", handleButtonTypeDelete);
 
   const openedPhoto = newCard.querySelector(".card__pointer");
-  openedPhoto.addEventListener("click", (event) => openPhotoHandler(event));
+  openedPhoto.addEventListener("click", (event) => openPhotoPopup(event));
 
   imageCard.alt = titleCard.textContent;
 
@@ -133,11 +135,11 @@ function preloadCard(initialItem) {
 };
 //Рендер карточки
 function renderCards(initialItem) {
-  initialContainer.prepend(preloadCard(initialItem));
+  initialContainer.prepend(createCard(initialItem));
 }
 // Загрузка карточки
 initialCards.forEach((initialItem) => {
   renderCards(initialItem);
 });
 
-photoForm.addEventListener("submit", submitPhotoHandler);
+photoForm.addEventListener("submit", handlePhotoFormSubmit);
