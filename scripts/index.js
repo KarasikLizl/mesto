@@ -3,11 +3,12 @@ const page = document.querySelector(".page");
 const profileName = page.querySelector(".profile__title");
 const profileJob = page.querySelector(".profile__subtitle");
 
-//Кнопки инициации попапов
+//Кнопки инициации и закрытия попапов
 const editProfileButton = page.querySelector(".profile__edit-button");
 const addPhotoButton = page.querySelector(".profile__add-button");
-
+const closeButtons = document.querySelectorAll('.popup__close-button');
 //Попапы
+const popup = page.querySelector(".popup");
 const popupProfile = page.querySelector(".popup_profile");
 const popupPhoto = page.querySelector(".popup_photo_add");
 const popupPhotoOpened = page.querySelector(".popup_photo_opened");
@@ -27,29 +28,24 @@ const popupPhotoLink = popupPhoto.querySelector(".form__input_field_photo");
 const fullPhoto = popupPhotoOpened.querySelector(".popup__big-photo");
 const photoSubtitle = popupPhotoOpened.querySelector(".popup__subtitle");
 
-
-//Функция закрытия popup
-function setPopupCloseHandler(newPopup) {
-  const closeBtn = newPopup.querySelector(".popup__close-button");
-  closeBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    newPopup.classList.toggle("popup_is_opened");
-  });
-  return newPopup;
+//Открытие попапа
+function openPopup(popup) {
+  popup.classList.add("popup_is_opened");
 }
-//Функция открытия popup
-function popupOpenHandler(button, popupType) {
-  button.addEventListener("click", function (event) {
-    event.preventDefault();
-    popupType.classList.toggle("popup_is_opened");
-  })
-};
+editProfileButton.addEventListener("click", () => {
+  openPopup(popupProfile)});
+addPhotoButton.addEventListener("click", () => {
+  openPopup(popupPhoto)});
 
-popupOpenHandler(editProfileButton, popupProfile);
-popupOpenHandler(addPhotoButton, popupPhoto);
+//Закрытие попапа
+function closePopup(popup) {
+  popup.classList.remove("popup_is_opened");  
+}
 
-setPopupCloseHandler(popupProfile);
-setPopupCloseHandler(popupPhoto); 
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
 
 //Функция редактирования имени профиля
 function handleProfileFormSubmit (event) {
@@ -85,12 +81,6 @@ function handleButtonTypeLike (event) {
 function handleButtonTypeDelete (event) {
   event.target.closest(".card").remove();
 }
-
-const photoCloseBtn = popupPhotoOpened.querySelector(".popup__close-button_type_photo");
-photoCloseBtn.addEventListener("click", function(event) {
-  event.preventDefault();
-  popupPhotoOpened.classList.toggle("popup_is_opened");
-});
 
 //Открытие фотокарточки
 function openPhotoPopup (event) {
