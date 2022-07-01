@@ -54,7 +54,7 @@ function handleProfileFormSubmit (event) {
   profileName.textContent = popupProfileName.value;
   profileJob.textContent = popupProfileJob.value;
 
-  popupProfile.classList.toggle("popup_is_opened");
+  closePopup(popupProfile);
 };
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
@@ -69,7 +69,7 @@ function handlePhotoFormSubmit (event) {
   popupPhotoTitle.value = '';
   popupPhotoLink.value  = '';
 
-  popupPhoto.classList.toggle("popup_is_opened");
+  closePopup(popupPhoto);
 };
 
 //Лайк фотокарточки
@@ -91,7 +91,7 @@ function openPhotoPopup (event) {
   fullPhoto.alt = cardTitle.textContent;
   fullPhoto.src = cardImage.src;
   photoSubtitle.textContent = cardTitle.textContent;
-  popupPhotoOpened.classList.toggle("popup_is_opened");
+  openPopup(popupPhotoOpened);
 };
 
 //Шаблоны
