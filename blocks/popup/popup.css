@@ -6,6 +6,7 @@
     justify-content: center;
     left: 0;
     top: 0;
+    display: flex;
     background: rgba(0, 0, 0, .5);
     visibility: hidden;
     opacity: 0;
