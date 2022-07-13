@@ -1,7 +1,6 @@
 .form__submit-button {
     width: 358px;
     height: 50px;
-    margin-top: 48px;
     margin-bottom: 37px;
     background-color: #000;
     color: #FFF;
@@ -25,7 +24,6 @@
     .form__submit-button {
         width: 238px;
         height: 46px;
-        margin-top: 45px;
         margin-bottom: 25px;
         font-size: 14px;
         line-height: 17px;
