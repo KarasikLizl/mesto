@@ -63,9 +63,9 @@
                 <button class="popup__close-button popup__close-button_type_photo-form" type="button"></button>
                 <h3 class="popup__title">Новое место</h3>
                 <form method="post" name="photo-add" class="form form_photo" novalidate>
-                    <input type="text" id="photo-name" placeholder="Название" class="form__input form__input_field_title" value="" name="photo-name" minlength="2" maxlength="30" required>        
+                    <input type="text" id="photo-name" placeholder="Название" class="form__input form__input_field_title" name="photo-name" minlength="2" maxlength="30" required>        
                     <span class="form__input-error photo-name-error"></span>
-                    <input type="url" id="link" placeholder="Ссылка на картинку" class="form__input form__input_field_photo" value="" name="photo-link" required>
+                    <input type="url" id="link" placeholder="Ссылка на картинку" class="form__input form__input_field_photo" name="photo-link" required>
                     <span class="form__input-error link-error"></span>
                     <button class="form__submit-button form__submit-button_type_photo" type="submit">Создать</button>
                 </form>
@@ -82,8 +82,9 @@
             </div>
         </div>
 
+    <script src="./scripts/validate.js" defer></script>
     <script src="./scripts/cards.js" defer></script>
     <script src="./scripts/index.js" defer></script>
-    <script src="./scripts/validate.js" defer></script>
+    
 </body>
 </html>
