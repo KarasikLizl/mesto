@@ -10,7 +10,6 @@ const addPhotoButton = page.querySelector(".profile__add-button");
 const escapeKey = 'Escape';
 
 //Попапы
-const popupContainer = page.querySelector(".popup__container");
 const popupProfile = page.querySelector(".popup_profile");
 const popupPhoto = page.querySelector(".popup_photo_add");
 const popupPhotoOpened = page.querySelector(".popup_photo_opened");
@@ -20,8 +19,6 @@ const formUser = popupProfile.querySelector(".form_profile");
 const popupProfileName = popupProfile.querySelector(".form__input_field_username");
 const popupProfileJob = popupProfile.querySelector(".form__input_field_job");
 const popupProfileCloseBtn = popupProfile.querySelector(".popup__close-button_type_profile");
-
-const button = document.querySelector('.form__submit-button')
 
 // Инпуты, форма и кнопки попапа для фотокарточек
 const formAddPhoto = popupPhoto.querySelector(".form_photo");
@@ -45,8 +42,8 @@ function disableButton() {
     const openedItem = document.querySelector('.popup_is_opened');
     const activeButton = openedItem.querySelector('.form__submit-button')
     if (activeButton) {
-    activeButton.classList.add('form__submit-button_invalid');
-    activeButton.setAttribute('disabled', true);
+      activeButton.classList.add('form__submit-button_invalid');
+      activeButton.setAttribute('disabled', true);
     }
 }
 
