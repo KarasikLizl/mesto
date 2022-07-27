@@ -1,9 +1,9 @@
 export default class Card {
-  constructor(data, selector, openPhotoPopup ) {
+  constructor(data, selector, openPhotoPopup) {
     this._name = data.name;
     this._link = data.link;
     this._selector = selector;
-    this._openPhotoPopup  = openPhotoPopup;
+    this._openPhotoPopup = openPhotoPopup;
   }
 
   //Возвращение разметки
@@ -30,20 +30,18 @@ export default class Card {
 
   //Установщик слушателя
   _setEventListeres() {
-    //Лайки
+    
     this._element
       .querySelector(".card__like-button")
       .addEventListener("click", () => this._handleCardLike());
-    //Корзинка
+    
     this._element
       .querySelector(".card__delete-button")
       .addEventListener("click", () => this._handleCardDelete());
 
-    //Открыть
     this._element
       .querySelector(".card__pointer")
       .addEventListener("click", () => this._handleCardOpen());
-    //Закрыть
   }
   //Слушатели
   _handleCardLike() {
@@ -60,6 +58,6 @@ export default class Card {
   }
 
   _handleCardOpen() {
-    this._openPhotoPopup(this._element)  
+    this._openPhotoPopup(this._element);
   }
 }

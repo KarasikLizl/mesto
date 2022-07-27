@@ -1,10 +1,11 @@
 import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 const page = document.querySelector(".page");
 
 const profileName = page.querySelector(".profile__title");
 const profileJob = page.querySelector(".profile__subtitle");
-
+const initialContainer = page.querySelector('.cards');
 //Кнопки инициации и закрытия попапов
 const editProfileButton = page.querySelector(".profile__edit-button");
 const addPhotoButton = page.querySelector(".profile__add-button");
@@ -20,7 +21,6 @@ const popupPhotoOpened = page.querySelector(".popup_photo_opened");
 const formUser = popupProfile.querySelector(".form_profile");
 const popupProfileName = popupProfile.querySelector(".form__input_field_username");
 const popupProfileJob = popupProfile.querySelector(".form__input_field_job");
-const popupProfileCloseBtn = popupProfile.querySelector(".popup__close-button_type_profile");
 
 // Инпуты, форма и кнопки попапа для фотокарточек
 const formAddPhoto = popupPhoto.querySelector(".form_photo");
@@ -30,7 +30,6 @@ const popupPhotoLink = popupPhoto.querySelector(".form__input_field_photo");
 // Кнопки попапа для открытия фотокарточек
 const fullPhoto = popupPhotoOpened.querySelector(".popup__big-photo");
 const photoSubtitle = popupPhotoOpened.querySelector(".popup__subtitle");
-
 
 //Открытие попапа
 function openPopup(popup) {
@@ -90,7 +89,6 @@ function handleProfileFormSubmit () {
 formUser.addEventListener('submit', handleProfileFormSubmit);
 
 //Фотокарточки
-
 //Сабмит добавления фотокарточки
 function handlePhotoFormSubmit () {
   renderCard({name: popupPhotoTitle.value, link: popupPhotoLink.value });
@@ -99,16 +97,6 @@ function handlePhotoFormSubmit () {
 
   closePopup(popupPhoto);
 };
-
-//Лайк фотокарточки
-// function handleButtonTypeLike (event) {
-//   event.target.classList.toggle('card__like-button_active');
-// };
-
-//Удаление фотокарточки
-// function handleButtonTypeDelete (event) {
-//   event.target.closest('.card').remove();
-// }
 
 //Открытие фотокарточки
 export function openPhotoPopup (event) {
@@ -121,39 +109,6 @@ export function openPhotoPopup (event) {
   openPopup(popupPhotoOpened);
 };
 
-//Шаблоны
-// const cardTemplate = page
-//   .querySelector('#card-template')
-//   .content.querySelector('.card');
-//Контейнер
-const initialContainer = page.querySelector('.cards');
-// Подгрузка начальных карточек
-// function createCard(initialItem) {
-//   const newCard = cardTemplate.cloneNode(true);
-
-//   const titleCard = newCard.querySelector('.card__title');
-//   titleCard.textContent = initialItem.name;
-
-//   const imageCard = newCard.querySelector('.card__image');
-//   imageCard.setAttribute('src', initialItem.link);
-  
-//   const likeButton = newCard.querySelector('.card__like-button');
-//   likeButton.addEventListener('click', handleButtonTypeLike);
-
-//   const deleteCard = newCard.querySelector('.card__delete-button');
-//   deleteCard.addEventListener('click', handleButtonTypeDelete);
-
-//   const openedPhoto = newCard.querySelector('.card__pointer');
-//   openedPhoto.addEventListener('click', (event) => openPhotoPopup(event));  
-
-//   imageCard.alt = titleCard.textContent;
-
-//   return newCard;
-// };
-//Рендер карточки
-// function renderCard(initialItem) {
-//   initialContainer.prepend(createCard(initialItem));
-// }
 // Загрузка карточки
 initialCards.forEach((item) => {
   const card = new Card(item, '#card-template', openPhotoPopup)
@@ -162,12 +117,17 @@ initialCards.forEach((item) => {
 });
 
 formAddPhoto.addEventListener('submit', handlePhotoFormSubmit);
-  
-enableValidation({
-  formElement: '.form',
+
+
+const enableValidation = {
   inputElement: '.form__input',
   buttonElement: '.form__submit-button',
   inactiveButtonClass: 'form__submit-button_invalid',
   inputErrorClass: 'form__input_type_error', 
   errorElement: 'form__input-error_active',
-}); 
+}; 
+
+const profileFormValidator = new FormValidator(enableValidation, formUser);
+profileFormValidator.enableValidation();
+const photoFormValidator = new FormValidator(enableValidation, formAddPhoto);
+photoFormValidator.enableValidation();
