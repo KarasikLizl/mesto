@@ -9,11 +9,10 @@ export default class FormValidator {
     const inputList = Array.from(this._formElement.querySelectorAll(this._settings.inputElement));
     const buttonElement = this._formElement.querySelector(this._settings.buttonElement);  
     this._toggleButtonState(inputList, buttonElement);
-    const current = this;
     inputList.forEach((inputElement) => {
-      inputElement.addEventListener('input', function () {        
-        current._checkInputValidity(inputElement);
-        current._toggleButtonState(inputList, buttonElement);
+      inputElement.addEventListener('input',  () => {        
+        this._checkInputValidity(inputElement);
+        this._toggleButtonState(inputList, buttonElement);
       });
     });
   };
