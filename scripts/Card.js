@@ -2,62 +2,46 @@ export default class Card {
   constructor(data, selector, openPhotoPopup) {
     this._name = data.name;
     this._link = data.link;
-    this._selector = selector;
     this._openPhotoPopup = openPhotoPopup;
-  }
-
-  //Возвращение разметки
-  _getTemplateElement() {
-    const cardTemplate = document
-      .querySelector(this._selector)
+    this._element = document
+      .querySelector(selector)
       .content.querySelector(".card")
       .cloneNode(true);
-
-    return cardTemplate;
+    this._cardLikeBtn = this._element.querySelector(".card__like-button");
+    this._cardTitle = this._element.querySelector(".card__title");
+    this._cardImage = this._element.querySelector(".card__image");
+    this._cardDeleteBtn = this._element.querySelector(".card__delete-button");
+    this._cardPointer = this._element.querySelector(".card__pointer");
   }
 
   //Создание карточки
   generateCard() {
-    this._element = this._getTemplateElement();
+    this._cardTitle.textContent = this._name;
+    this._cardImage.src = this._link;
     this._setEventListeres();
-
-    this._element.querySelector(".card__title").textContent = this._name;
-    this._element.querySelector(".card__image").alt = this._element.textContent;
-    this._element.querySelector(".card__image").src = this._link;
 
     return this._element;
   }
 
   //Установщик слушателя
   _setEventListeres() {
-    
-    this._element
-      .querySelector(".card__like-button")
-      .addEventListener("click", () => this._handleCardLike());
-    
-    this._element
-      .querySelector(".card__delete-button")
-      .addEventListener("click", () => this._handleCardDelete());
-
-    this._element
-      .querySelector(".card__pointer")
-      .addEventListener("click", () => this._handleCardOpen());
+    this._cardLikeBtn.addEventListener("click", () => this._handleCardLike());
+    this._cardDeleteBtn.addEventListener("click", () =>
+      this._handleCardDelete()
+    );
+    this._cardPointer.addEventListener("click", () => this._handleCardOpen());
   }
   //Слушатели
   _handleCardLike() {
-    this._element
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
+    this._cardLikeBtn.classList.toggle("card__like-button_active");
   }
 
   _handleCardDelete() {
-    this._element
-      .querySelector(".card__delete-button")
-      .closest(".card")
-      .remove();
+    this._element.remove();
+    this._element = null;
   }
 
   _handleCardOpen() {
-    this._openPhotoPopup(this._element);
+    this._openPhotoPopup(this._name, this._link);
   }
 }
