@@ -42,12 +42,14 @@ function openPopup(popup) {
 }
 
 profileEditButton.addEventListener("click", () => {
+  popupProfileName.value = profileName.textContent;
+  popupProfileJob.value = profileJob.textContent;
   openPopup(popupProfile);
-  profileFormValidator.disableButton();
+  profileFormValidator.resetValidation();
 });
 photoAddButton.addEventListener("click", () => {
   openPopup(popupPhoto);
-  photoFormValidator.disableButton();
+  photoFormValidator.resetValidation();
 });
 
 //Закрытие попапа
@@ -93,8 +95,7 @@ function handlePhotoFormSubmit(evt) {
   evt.preventDefault();
   const newCard = createCard(popupPhotoTitle.value, popupPhotoLink.value);
   initialContainer.prepend(newCard);
-  popupPhotoTitle.value = "";
-  popupPhotoLink.value = "";
+  formAddPhoto.reset();
 
   closePopup(popupPhoto);
 }
@@ -113,7 +114,7 @@ function createCard(title, url) {
 export function openPhotoPopup(name, link) {
   fullPhoto.setAttribute("src", link);
   fullPhoto.setAttribute("alt", name);
-  photoSubtitle.innerText = name;
+  photoSubtitle.textContent = name.textContent;
 
   openPopup(popupPhotoOpened);
 }
@@ -136,8 +137,6 @@ const enableValidation = {
 
 const profileFormValidator = new FormValidator(enableValidation, formUser);
 profileFormValidator.enableValidation();
-// profileFormValidator.disableButton();
 
 const photoFormValidator = new FormValidator(enableValidation, formAddPhoto);
 photoFormValidator.enableValidation();
-// photoFormValidator.disableButton();
