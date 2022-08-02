@@ -18,6 +18,7 @@ export default class Card {
   generateCard() {
     this._cardTitle.textContent = this._name;
     this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
     this._setEventListeres();
 
     return this._element;
