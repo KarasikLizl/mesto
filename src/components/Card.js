@@ -1,8 +1,8 @@
 export default class Card {
-  constructor(data, selector, openPhotoPopup) {
+  constructor(data, selector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
-    this._openPhotoPopup = openPhotoPopup;
+    this._handleCardClic = handleCardClick;
     this._element = document
       .querySelector(selector)
       .content.querySelector(".card")
@@ -43,6 +43,6 @@ export default class Card {
   }
 
   _handleCardOpen() {
-    this._openPhotoPopup(this._name, this._link);
+    this._handleCardClic(this._name, this._link);
   }
 }

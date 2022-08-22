@@ -49,9 +49,9 @@
                 <button class="popup__close-button popup__close-button_type_profile" type="button"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form method="post" name="profile-edit" class="form form_profile" novalidate>                
-                    <input type="text" id="title-input" placeholder="Ваше имя" class="form__input form__input_field_username" value="Жак-Ив Кусто" name="profile-name" minlength="2" maxlength="40" required>        
+                    <input type="text" id="title-input" placeholder="Ваше имя" class="form__input form__input_field_username" value="Жак-Ив Кусто" name="title" minlength="2" maxlength="40" required>        
                     <span class="form__input-error title-input-error"></span>
-                    <input type="text" id="subtitle-input" placeholder="Пара слов о вас" class="form__input form__input_field_job" value="Исследователь океана" name="profile-job" minlength="2" maxlength="200" required>
+                    <input type="text" id="subtitle-input" placeholder="Пара слов о вас" class="form__input form__input_field_job" value="Исследователь океана" name="subtitle" minlength="2" maxlength="200" required>
                     <span class="form__input-error subtitle-input-error"></span>
                     <button class="form__submit-button form__submit-button_type_profile" type="submit">Сохранить</button>
                 </form>
@@ -63,9 +63,9 @@
                 <button class="popup__close-button popup__close-button_type_photo-form" type="button"></button>
                 <h3 class="popup__title">Новое место</h3>
                 <form method="post" name="photo-add" class="form form_photo" novalidate>
-                    <input type="text" id="photo-name" placeholder="Название" class="form__input form__input_field_title" name="photo-name" minlength="2" maxlength="30" required>        
+                    <input type="text" id="photo-name" placeholder="Название" class="form__input form__input_field_title" name="name" minlength="2" maxlength="30" required>        
                     <span class="form__input-error photo-name-error"></span>
-                    <input type="url" id="link" placeholder="Ссылка на картинку" class="form__input form__input_field_photo" name="photo-link" required>
+                    <input type="url" id="link" placeholder="Ссылка на картинку" class="form__input form__input_field_photo" name="link" required>
                     <span class="form__input-error link-error"></span>
                     <button class="form__submit-button form__submit-button_type_photo" type="submit">Создать</button>
                 </form>
@@ -81,7 +81,5 @@
                 </figure> 
             </div>
         </div>    
-   
-    <!-- <script type="module" src="./scripts/index.js"></script>     -->
 </body>
 </html>
