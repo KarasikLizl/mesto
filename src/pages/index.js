@@ -18,8 +18,7 @@ import {
   popupPhotoOpenedSelector,  
   formUser,
   formAddPhoto,
-  fullPhoto,
-  enableValidation,
+  objectValidation,
   initialCards
 } from "../utils/constants.js";
 
@@ -33,8 +32,7 @@ popupEditProfile.setEventListeners();
 profileEditButton.addEventListener("click", () => {
   popupEditProfile.open();
   popupEditProfile.setInputValues(userInfo.getUserInfo());
-
-  profileFormValidator.enableValidation();
+  profileFormValidator.resetValidation();
 });
 
 //попап для добавления фото
@@ -45,19 +43,18 @@ const popupAddPhoto = new PopupWithForm(function (params) {
 popupAddPhoto.setEventListeners();
 photoAddButton.addEventListener("click", () => {
   popupAddPhoto.open();
+  photoFormValidator.resetValidation();
 });
 
 //попап с фото
-function openPhoto(name, link) {
-  const popupOpenedPhoto = new PopupWithImage(
-    {
-      src: link,
-      alt: name,
-    },
-    popupPhotoOpenedSelector
-  );
-  popupOpenedPhoto.setEventListeners();
-  popupOpenedPhoto.open();
+const popupOpenedPhoto = new PopupWithImage(popupPhotoOpenedSelector);
+popupOpenedPhoto.setEventListeners();
+
+function openPhoto(name, link) { 
+  popupOpenedPhoto.open({
+    src: link,
+    alt: name,
+  });
 }
 
 //Создание карточки
@@ -81,6 +78,8 @@ const sectionCards = new Section(
 );
 sectionCards.renderItems();
 
-const profileFormValidator = new FormValidator(enableValidation, formUser);
-const photoFormValidator = new FormValidator(enableValidation, formAddPhoto);
+const profileFormValidator = new FormValidator(objectValidation, formUser);
+profileFormValidator.enableValidation();
+const photoFormValidator = new FormValidator(objectValidation, formAddPhoto);
 photoFormValidator.enableValidation();
+

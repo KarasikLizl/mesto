@@ -21,7 +21,7 @@ export default class PopupWithForm extends Popup {
 
     close() {
         this._popupForm.reset();
-        return super.close();
+        super.close();
     }
 
     setEventListeners() {
@@ -31,6 +31,6 @@ export default class PopupWithForm extends Popup {
             this.close();
             
         });
-        return super.setEventListeners();
+        super.setEventListeners();
     }
 }
