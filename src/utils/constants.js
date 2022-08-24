@@ -18,8 +18,8 @@ export const formUser = popupProfile.querySelector(".form_profile");
 // Форма попапа для фотокарточек
 export const formAddPhoto = popupPhoto.querySelector(".form_photo");
 // Открытие фотокарточек
-export const fullPhoto =".popup__big-photo";
-export const fullPhotoSubtitle = ".popup__subtitle";
+export const fullPhoto = popupPhotoOpened.querySelector(".popup__big-photo");
+export const fullPhotoSubtitle = popupPhotoOpened.querySelector(".popup__subtitle");
 
 export const objectValidation = {
     inputElement: ".form__input",
