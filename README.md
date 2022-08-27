@@ -14,8 +14,8 @@
 
 **GitHub pages**
 
-* Ссылка на страницу в GitHub: https://karasiklizl.github.io/mesto/index.html 
-* Ссылка на страницу в GitHub: https://karasiklizl.github.io/mesto
+* Ссылка на страницу в GitHub: https://karasiklizl.github.io/mesto/
+
 
 ### О планах на доработку
 
