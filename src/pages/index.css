@@ -26,7 +26,9 @@
 @import url("../blocks/card/__title/card__title.css");
 @import url("../blocks/card/__like-button/card__like-button.css");
 @import url("../blocks/card/__like-button/__like-button_active/card__like-button_active.css");
+@import url("../blocks/card/__like-section/card__like-section.css");
 @import url("../blocks/card/__delete-button/card__delete-button.css");
+@import url("../blocks/card/__like-number/card__like-number.css");
 /* стили footer */
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__caption/footer__caption.css");
@@ -43,10 +45,12 @@
 @import url("../blocks/popup/_is_opened/popup_is_opened.css");
 @import url("../blocks/popup/__big/popup__big-photo.css");
 @import url("../blocks/popup/__subtitle/popup__subtitle.css");
+@import url("../blocks/popup/__container/_confirm/popup__container_confirm.css");
+@import url("../blocks/popup/__confirm-button/popup__confirm-button.css");
+@import url("../blocks/popup/__title/__type/popup__title_type_confirm.css");
 /* стили form */
 @import url("../blocks/form/form.css");
 @import url("../blocks/form/_profile/form_profile.css");
-@import url("../blocks/form/_photo/form_photo.css");
 @import url("../blocks/form/__input/form__input.css");
 @import url("../blocks/form/__input/_type/form__input_type_error.css");
 @import url("../blocks/form/__submit-button/form__submit-button.css");

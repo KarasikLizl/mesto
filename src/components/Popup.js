@@ -1,6 +1,6 @@
-const popupOpenSelector = '.popup_is_opened';
-const popupContainerSelector = '.popup__container';
-const closeBtnSelector = '.popup__close-button'
+// const popupOpenSelector = '.popup_is_opened';
+// const popupContainerSelector = '.popup__container';
+// const closeBtnSelector = '.popup__close-button'
 
 export default class Popup {
     constructor(popupSelector) {
