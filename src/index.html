@@ -13,13 +13,15 @@
     <main class="content">
         <section class="profile">
             <div class="profile__user">
-                <img class="profile__avatar" alt="Портрет Ж. Кусто" src="./images/avatar.png">
+                <div class="profile__avatar" >
+                    <div class=" profile__overlay"></div>
+                </div>
                 <div class="profile__info">
                     <div class="profile__name">
-                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <h1 class="profile__title"></h1>
                         <button class="profile__edit-button" type="button"></button>
                     </div>
-                    <p class="profile__subtitle">Исследователь океана</p>
+                    <p class="profile__subtitle"></p>
                 </div>
             </div>
            <button class="profile__add-button" type="button"></button>
@@ -52,9 +54,9 @@
                 <button class="popup__close-button popup__close-button_type_profile" type="button"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form method="post" name="profile-edit" class="form form_profile" novalidate>                
-                    <input type="text" id="title-input" placeholder="Ваше имя" class="form__input form__input_field_username" value="Жак-Ив Кусто" name="title" minlength="2" maxlength="40" required>        
+                    <input type="text" id="title-input" placeholder="Ваше имя" class="form__input form__input_field_username" value="Жак-Ив Кусто" name="name" minlength="2" maxlength="40" required>        
                     <span class="form__input-error title-input-error"></span>
-                    <input type="text" id="subtitle-input" placeholder="Пара слов о вас" class="form__input form__input_field_job" value="Исследователь океана" name="subtitle" minlength="2" maxlength="200" required>
+                    <input type="text" id="subtitle-input" placeholder="Пара слов о вас" class="form__input form__input_field_job" value="Исследователь океана" name="about" minlength="2" maxlength="200" required>
                     <span class="form__input-error subtitle-input-error"></span>
                     <button class="form__submit-button form__submit-button_type_profile" type="submit">Сохранить</button>
                 </form>

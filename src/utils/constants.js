@@ -1,6 +1,7 @@
 //Информация пользователя
 export const profileName = document.querySelector(".profile__title");
 export const profileJob = document.querySelector(".profile__subtitle");
+export const profileAvatar = document.querySelector(".profile__avatar");
 //Контейнер
 export const initialContainerSelector = ".cards"
 //Кнопки инициации и закрытия попапов
