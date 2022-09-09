@@ -102,7 +102,7 @@ photoAddButton.addEventListener("click", () => {
 
 //Попап для аватара
 const popupChangeAvatar = new PopupWithForm(function (params) {
-  api
+  return api
     .editAvatar(params)
     .then(() => {
       userInfo.setUserAvatar(params.avatar);
@@ -115,7 +115,8 @@ const popupChangeAvatar = new PopupWithForm(function (params) {
 
 popupChangeAvatar.setEventListeners();
 avatarEditButton.addEventListener("click", () => {
-  popupChangeAvatar.open();
+  popupChangeAvatar.open(); 
+  avatarFormValidator.resetValidation(); 
 });
 
 //попап с фото
