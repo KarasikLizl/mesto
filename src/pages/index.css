@@ -30,6 +30,7 @@
 @import url("../blocks/card/__like-section/card__like-section.css");
 @import url("../blocks/card/__delete-button/card__delete-button.css");
 @import url("../blocks/card/__like-number/card__like-number.css");
+@import url("../blocks/card/__delete-button/_disabled/card__delete-button_disabled.css");
 /* стили footer */
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__caption/footer__caption.css");

@@ -4,13 +4,23 @@ export default class UserInfo {
     return {
       name: profileName.textContent,
       about: profileJob.textContent,
-      // avatar: this._avatar.src
     };
   }
 
   setUserInfo({name, about}) {
     profileName.textContent = name;
     profileJob.textContent = about;
-    // this._avatar.src = data.avatar;
+  }
+
+  setUserAvatar(avatar) {
+    profileAvatar.style.backgroundImage = `url(${avatar})`;
+  }
+
+  setUserId(id) {
+    this._userId = id
+  }
+
+  getUserId(){
+    return this._userId
   }
 }
