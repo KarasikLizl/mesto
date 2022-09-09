@@ -36,23 +36,19 @@ const api = new Api({
 const userInfo = new UserInfo();
 
 //Получение списка карточек
-const sectionCards = new Section(
-  {
-    items: [],
-    renderer: (item) => {
-      sectionCards.addItems(createCard(item));
-    },
-  },
-  initialContainerSelector
-);
+const sectionCards = new Section(initialContainerSelector);
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cardsData]) => {
     userInfo.setUserInfo(userData);
     userInfo.setUserId(userData._id);
     userInfo.setUserAvatar(userData.avatar);
-    sectionCards.setItems(cardsData);
-    sectionCards.renderItems();
+    sectionCards.renderItems({
+      items: cardsData,
+      renderer: (item) => {
+        sectionCards.addItem(createCard(item));
+      },
+    });
   })
   .catch((err) => {
     console.log(err);
@@ -115,8 +111,8 @@ const popupChangeAvatar = new PopupWithForm(function (params) {
 
 popupChangeAvatar.setEventListeners();
 avatarEditButton.addEventListener("click", () => {
-  popupChangeAvatar.open(); 
-  avatarFormValidator.resetValidation(); 
+  avatarFormValidator.resetValidation();
+  popupChangeAvatar.open();
 });
 
 //попап с фото
@@ -146,15 +142,16 @@ function createCard({ name, link, _id, owner, likes }) {
     data,
     "#card-template",
     openPhoto,
-    closePhoto,
+    deletePhoto,
     likePhoto
   );
   const newCard = card.generateCard();
-  function closePhoto() {
+  function deletePhoto() {
     popupConfirmDelete.setHandleFormSubmit(() => {
-      api.deleteCard(_id).then((res) => {
-        const cardGen = card.generateCard();
-        cardGen.remove();
+      api.deleteCard(_id).then(() => {
+        card.deleteCard();
+      }).catch((err) => {
+        console.log(err);
       });
     });
     popupConfirmDelete.open();
@@ -163,16 +160,19 @@ function createCard({ name, link, _id, owner, likes }) {
   function likePhoto(id, isLiked) {
     if (isLiked) {
       api.removeLike(id).then((data) => {
-        card.setLikesCounter(data.likes.length);
-        card.updateLikesNum(data.likes);
+        card.updateLikesNum(data.likes, data.likes.length);
+      }).catch((err) => {
+        console.log(err);
       });
     } else {
       api.putLike(id).then((data) => {
-        card.setLikesCounter(data.likes.length);
-        card.updateLikesNum(data.likes);
+        card.updateLikesNum(data.likes, data.likes.length);
+      }).catch((err) => {
+        console.log(err);
       });
     }
   }
+
   return newCard;
 }
 

@@ -23,10 +23,10 @@ export const formUser = popupProfile.querySelector(".form_profile");
 // Форма попапа для фотокарточек
 export const formAddPhoto = popupPhoto.querySelector(".form_photo");
 //Форма попапа для изменения аватара 
-export const formAvatar = popupAvatar.querySelector('.form_avatar')
+export const formAvatar = popupAvatar.querySelector('.form_avatar');
 // Открытие фотокарточек
-export const fullPhoto = popupPhotoOpened.querySelector(".popup__big-photo");
-export const fullPhotoSubtitle = popupPhotoOpened.querySelector(".popup__subtitle");
+export const fullPhotoSelector = ".popup__big-photo";
+export const fullPhotoSubtitleSelector = ".popup__subtitle";
 
 export const objectValidation = {
     inputElement: ".form__input",

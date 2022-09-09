@@ -1,5 +1,11 @@
 export default class Card {
-  constructor(data, selector, handleCardClick, handleDeleteClick, handleLikeClick) {
+  constructor(
+    data,
+    selector,
+    handleCardClick,
+    handleDeleteClick,
+    handleLikeClick
+  ) {
     this._name = data.name;
     this._link = data.link;
     this._myId = data.myId;
@@ -26,53 +32,53 @@ export default class Card {
     this._cardTitle.textContent = this._name;
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
-    this._setEventListeres();
-    this._setLikeIfActive();
-    this.setLikesCounter(this._likes.length);
+    this._setEventListeners();
+    this.updateLikesNum(this._likes, this._likes.length);
     if (this._cardOwner !== this._myId) {
-			this._disableDeleteCard();
-		}
+      this._disableDeleteCard();
+    }
+    this._setLikeIfActive();
 
     return this._element;
   }
 
-  setLikesCounter(counter) {
-    this._cardLikeNum.textContent = counter;
-  }
-
-  updateLikesNum (likes) {
+  updateLikesNum(likes, counter) {
     this._likes = likes;
+    this._cardLikeNum.textContent = counter;
+    this._setLikeIfActive();
   }
   //Если лайки есть
   _setLikeIfActive() {
     const isLiked = this._isLiked();
     if (isLiked) {
       this._cardLikeBtn.classList.add("card__like-button_active");
+    } else {
+      this._cardLikeBtn.classList.remove("card__like-button_active");
     }
-}
+  }
 
   //Установщик слушателя
-  _setEventListeres() {
+  _setEventListeners() {
     this._cardLikeBtn.addEventListener("click", () => this._handleCardLike());
     this._cardDeleteBtn.addEventListener("click", () =>
-      this._handleCardDelete()
-    );
+    this._handleDeleteClick(this._cardId));
     this._cardPointer.addEventListener("click", () => this._handleCardOpen());
   }
   //Слушатели
   _handleCardLike() {
-    this._cardLikeBtn.classList.toggle("card__like-button_active");
+    this._setLikeIfActive()
     this._handleLikeClick(this._cardId, this._isLiked());
   }
 
   _isLiked() {
-		return this._likes.some(user => {
-			return user._id === this._myId;
-		});
-	}
+    return this._likes.some((user) => {
+      return user._id === this._myId;
+    });
+  }
 
-  _handleCardDelete() {
-    this._handleDeleteClick(this._cardId);
+  deleteCard() {
+    this._element.remove();
+    this._element = null;
   }
 
   _handleCardOpen() {
