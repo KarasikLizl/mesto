@@ -21,7 +21,7 @@ import {
   formAvatar,
   objectValidation,
   popupConfirmDeleteSelector,
-  popupAvatarSelector, 
+  popupAvatarSelector,
   avatarEditButton,
 } from "../utils/constants.js";
 
@@ -46,41 +46,17 @@ const sectionCards = new Section(
   initialContainerSelector
 );
 
-// api
-//   .getInitialCards()
-//   .then((data) => {
-//     sectionCards.setItems(data);
-//     sectionCards.renderItems();
-//   })
-//   .catch((err) => {
-//     console.log(err.status);
-//   });
-
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([userData, cardsData])=> {
+  .then(([userData, cardsData]) => {
     userInfo.setUserInfo(userData);
-	  userInfo.setUserId(userData._id);
-	  userInfo.setUserAvatar(userData.avatar);
-	  sectionCards.setItems(cardsData);
-	  sectionCards.renderItems();
+    userInfo.setUserId(userData._id);
+    userInfo.setUserAvatar(userData.avatar);
+    sectionCards.setItems(cardsData);
+    sectionCards.renderItems();
   })
   .catch((err) => {
     console.log(err);
   });
-
-// api
-//   .getUserInfo()
-//   .then((data) => {
-//     userInfo.setUserInfo({
-//       name: data.name,
-//       about: data.about,
-//     });
-//     userInfo.setUserId(data._id);
-//     userInfo.setUserAvatar(data.avatar)
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
 
 //попап для редактирования профиля
 const popupEditProfile = new PopupWithForm(function (params) {
@@ -126,20 +102,21 @@ photoAddButton.addEventListener("click", () => {
 
 //Попап для аватара
 const popupChangeAvatar = new PopupWithForm(function (params) {
-  api.editAvatar(params)
-  .then(()=>{
-    userInfo.setUserAvatar(params.avatar);
-    popupChangeAvatar.close();
-  }).catch((err) => {
-    console.log(err)
-  });
+  api
+    .editAvatar(params)
+    .then(() => {
+      userInfo.setUserAvatar(params.avatar);
+      popupChangeAvatar.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }, popupAvatarSelector);
 
 popupChangeAvatar.setEventListeners();
-avatarEditButton.addEventListener('click', () => {
+avatarEditButton.addEventListener("click", () => {
   popupChangeAvatar.open();
-
-})
+});
 
 //попап с фото
 const popupOpenedPhoto = new PopupWithImage(popupPhotoOpenedSelector);
@@ -152,8 +129,6 @@ function openPhoto(name, link) {
   });
 }
 
-
-
 const popupConfirmDelete = new PopupConfirmation(popupConfirmDeleteSelector);
 popupConfirmDelete.setEventListeners();
 //Создание карточки
@@ -164,9 +139,15 @@ function createCard({ name, link, _id, owner, likes }) {
     myId: userInfo.getUserId(),
     id: _id,
     owner: owner,
-    likes: likes
+    likes: likes,
   };
-  const card = new Card(data, "#card-template", openPhoto, closePhoto, likePhoto);
+  const card = new Card(
+    data,
+    "#card-template",
+    openPhoto,
+    closePhoto,
+    likePhoto
+  );
   const newCard = card.generateCard();
   function closePhoto() {
     popupConfirmDelete.setHandleFormSubmit(() => {
@@ -175,25 +156,22 @@ function createCard({ name, link, _id, owner, likes }) {
         cardGen.remove();
       });
     });
-    popupConfirmDelete.open()
+    popupConfirmDelete.open();
   }
 
   function likePhoto(id, isLiked) {
-		if (isLiked) {
-			api.removeLike(id)
-			.then((data) => {
-				card.setLikesCounter(data.likes.length);
-				card.updateLikesNum(data.likes);
-			});
-		} else {
-			api.putLike(id)
-			.then((data) => {
-				card.setLikesCounter(data.likes.length);
-				card.updateLikesNum(data.likes);
-			});
-		}
-	}
-
+    if (isLiked) {
+      api.removeLike(id).then((data) => {
+        card.setLikesCounter(data.likes.length);
+        card.updateLikesNum(data.likes);
+      });
+    } else {
+      api.putLike(id).then((data) => {
+        card.setLikesCounter(data.likes.length);
+        card.updateLikesNum(data.likes);
+      });
+    }
+  }
   return newCard;
 }
 
